@@ -10,7 +10,10 @@ import { AsyncPipeTestComponent } from './async-pipe-test/async-pipe-test.compon
 import { SharkDirective } from './viewChileExample/withDirective/shark.directive';
 import { PupComponent } from './viewChileExample/withComponent/pup.component';
 import { GetCategoriesComponent } from './ResolverExample/get-categories/get-categories.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { CounterComponent } from './sharedNgRx/components/counter/counter.component'
+import { counterReducer } from './sharedNgRx/counter.reduce';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,14 @@ import { HttpClientModule } from '@angular/common/http'
     AsyncPipeTestComponent,
     SharkDirective,
     PupComponent,
-    GetCategoriesComponent
+    GetCategoriesComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot({counter:counterReducer}),
   ],
   providers: [],
   bootstrap: [AppComponent]
